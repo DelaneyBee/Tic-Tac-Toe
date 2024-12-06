@@ -40,35 +40,46 @@ struct ContentView: View {
                     .rotation3DEffect(.degrees(moves[index] == "" ? 180 : 0), axis: (0, 1, 0))
                 }
             }
-                ForEach(0..<9) { index in
-                }
             ForEach(0..<9) { index in
             }
-            ForEach(0..<9) { index in
-            }
-            ForEach(0..<9) { index in
-            }
-            ForEach(0..<9) { index in
-            }
-            ForEach(0..<9) { index in
-            }
-            ForEach(0..<9) { index in
-            }
+        ForEach(0..<9) { index in
+        }
+        ForEach(0..<9) { index in
+        }
+        ForEach(0..<9) { index in
+        }
+        ForEach(0..<9) { index in
+        }
+        ForEach(0..<9) { index in
+        }
+        ForEach(0..<9) { index in
+        }
+        ForEach(0..<9) { index in
+        }
             ForEach(0..<9) { index in
             }
         }
-        .preferredColorScheme(.dark)
-        .alert(isPresented: $gameOver) {
-            Alert(title: Text(winMessage))
-        }
-        .onChange(of: moves) { oldValue, newValue in
-            checkforWinner()
-        }
+            .preferredColorScheme(.dark)
+            .alert(isPresented: $gameOver) {
+                Alert(title: Text(winMessage), dismissButton: .destructive(Text("Play Again"),action: {
+                    withAnimation {
+                        moves = Array(repeating: "", count: 9)
+                        gameOver = false
+                    }
+                }))
+            }
+            .onChange(of: moves) { oldValue, newValue in
+                checkforWinner()
+            }
     }
     private func checkforWinner() {
         checkLine(a: 0, b: 1, c: 2) //top row
         checkLine(a: 3, b: 4, c: 5)
         checkLine(a: 6, b: 7, c: 8)
+        if !(gameOver || moves.contains("")) {
+            winMessage = "Cats Game"
+            gameOver = true
+        }
     }
     private func checkLine(a: Int, b: Int, c: Int) {
         if moves[a] != "" && moves[a] == moves[b] && moves[b] == moves[c] {
