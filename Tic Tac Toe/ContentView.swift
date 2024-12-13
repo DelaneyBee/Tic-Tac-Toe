@@ -21,8 +21,7 @@ struct ContentView: View {
                 ForEach(0..<9) { index in
                     ZStack {
                         Color.blue
-                        Color.white
-                            .opacity(moves[index] == "" ? 1 : 0)
+                        Color.white.opacity(moves[index] == "" ? 1 : 0)
                         Text(moves[index])
                             .font(.system(size: 90))
                             .fontWeight(.heavy)
@@ -39,24 +38,6 @@ struct ContentView: View {
                     }
                     .rotation3DEffect(.degrees(moves[index] == "" ? 180 : 0), axis: (0, 1, 0))
                 }
-            }
-            ForEach(0..<9) { index in
-            }
-        ForEach(0..<9) { index in
-        }
-        ForEach(0..<9) { index in
-        }
-        ForEach(0..<9) { index in
-        }
-        ForEach(0..<9) { index in
-        }
-        ForEach(0..<9) { index in
-        }
-        ForEach(0..<9) { index in
-        }
-        ForEach(0..<9) { index in
-        }
-            ForEach(0..<9) { index in
             }
         }
             .preferredColorScheme(.dark)
@@ -76,6 +57,11 @@ struct ContentView: View {
         checkLine(a: 0, b: 1, c: 2) //top row
         checkLine(a: 3, b: 4, c: 5)
         checkLine(a: 6, b: 7, c: 8)
+        checkLine(a:0, b: 3, c: 6)
+        checkLine(a:1, b: 4, c: 7)
+        checkLine(a:2, b: 5, c: 8)
+        checkLine(a:0, b: 4, c: 8)
+         checkLine(a:6, b: 4, c: 2)
         if !(gameOver || moves.contains("")) {
             winMessage = "Cats Game"
             gameOver = true
